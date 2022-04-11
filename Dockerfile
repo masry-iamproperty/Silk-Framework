@@ -2,6 +2,8 @@ FROM composer:latest
 
 WORKDIR /app
 
-COPY composer.json .
+COPY . ./
 
 RUN composer install
+
+EXPOSE 9000

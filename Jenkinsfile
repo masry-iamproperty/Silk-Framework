@@ -1,19 +1,10 @@
-pipeline {
-    agent {
-        docker {
-            image 'composer:latest'
-        }
+node {
+    checkout scm
+
+    stage("Build"){
+        sh 'composer install'
     }
-    stages {
-        stage("Build"){
-            steps {
-                sh 'composer install'
-            }
-        }
-        stage("Test"){
-            steps {
-                sh 'vendor/bin/phpunit'
-            }
-        }
+    stage("Test"){
+        sh '/vendor/bin/phpunit'
     }
 }
