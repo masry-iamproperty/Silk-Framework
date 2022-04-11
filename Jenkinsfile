@@ -1,7 +1,7 @@
 node {
     checkout scm
 
-    def imageName = docker.image('composer:latest')
+    def imageName = 'composer:latest'
 
     stage("Build"){
         docker.build(imageName).inside {
