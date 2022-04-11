@@ -11,10 +11,20 @@ node {
     }
     stage("Test"){
         def tests_directory = 'tests/'
-        container.inside {
-            sh "./vendor/bin/phpunit ${tests_directory}"
+        try {
+            container.inside {
+                sh "./vendor/bin/phpunit ${tests_directory}"
+            }
+            def tests_ran = True
+        } catch {
+            println "Exception happened. "
+            def tests_ran = False
         }
     }
 
-    println "Build succeeded"
+    if (tests_ran) {
+        println "Build succeeded"
+    } else {
+        println "Tests did not run"
+    }
 }
