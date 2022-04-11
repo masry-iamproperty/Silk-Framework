@@ -1,6 +1,8 @@
 node {
     checkout scm
 
+    docker.build('composer:latest')
+
     stage("Build"){
         sh 'composer install'
     }
