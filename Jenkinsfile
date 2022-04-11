@@ -8,4 +8,11 @@ node {
             sh 'composer install'
         }
     }
+    stage("Test"){
+        container.inside {
+            sh '/vendor/bin/phpunit'
+        }
+    }
+
+    println "Build succeeded"
 }
