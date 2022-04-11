@@ -2,9 +2,9 @@ node {
     checkout scm
 
     def imageName = 'composer:latest'
-
+    container = docker.build(imageName)
     stage("Build"){
-        docker.build(imageName).inside {
+        container.inside {
             sh 'composer install'
         }
     }
