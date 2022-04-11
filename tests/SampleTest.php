@@ -13,6 +13,6 @@ class SampleTest extends TestCase
     function test_sample_test_2()
     {
         $variable = null;
-        $this->assertNull(null, "${$variable} is not null");
+        $this->assertNull($variable, "${variable} is not null");
     }
 }
