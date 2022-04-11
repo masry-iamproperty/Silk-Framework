@@ -1,8 +1,8 @@
 node {
     checkout scm
 
-    def imageName = 'composer:latest'
-    container = docker.build(imageName)
+    container = docker.build('composer:latest')
+
     stage("Build"){
         container.inside {
             sh 'ls -ahl'
