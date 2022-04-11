@@ -1,12 +1,11 @@
 node {
     checkout scm
 
-    docker.image('composer:latest')
+    def imageName = docker.image('composer:latest')
 
     stage("Build"){
-        sh 'composer install'
-    }
-    stage("Test"){
-        sh '/vendor/bin/phpunit'
+        docker.build(imageName).inside {
+            sh 'composer install'
+        }
     }
 }
