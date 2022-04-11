@@ -10,8 +10,9 @@ node {
         }
     }
     stage("Test"){
+        def tests_directory = 'tests/'
         container.inside {
-            sh './vendor/bin/phpunit'
+            sh "./vendor/bin/phpunit ${tests_directory}"
         }
     }
 
